@@ -8,7 +8,7 @@
         <item name="showThirds">true</item>
         <item name="showCircle">false</item>
         <item name="showHandles">always</item>
-        <item name="highlightColor">@color/highlight</item>
+        <item name="highlightedColor">@color/highlight</item>
     </style>
 
 </resources>

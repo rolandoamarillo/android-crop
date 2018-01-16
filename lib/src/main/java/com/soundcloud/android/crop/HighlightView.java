@@ -67,7 +67,7 @@ class HighlightView {
     private View viewContext; // View displaying image
     private boolean showThirds;
     private boolean showCircle;
-    private int highlightColor;
+    private int highlightedColor;
 
     private ModifyMode modifyMode = ModifyMode.None;
     private HandleMode handleMode = HandleMode.Changing;
@@ -89,7 +89,7 @@ class HighlightView {
         try {
             showThirds = attributes.getBoolean(R.styleable.CropImageView_showThirds, false);
             showCircle = attributes.getBoolean(R.styleable.CropImageView_showCircle, false);
-            highlightColor = attributes.getColor(R.styleable.CropImageView_highlightColor,
+            highlightedColor = attributes.getColor(R.styleable.CropImageView_highlightedColor,
                     DEFAULT_HIGHLIGHT_COLOR);
             handleMode = HandleMode.values()[attributes.getInt(R.styleable.CropImageView_showHandles, 0)];
         } finally {
@@ -112,7 +112,7 @@ class HighlightView {
         outlinePaint.setAntiAlias(true);
         outlineWidth = dpToPx(OUTLINE_DP);
 
-        handlePaint.setColor(highlightColor);
+        handlePaint.setColor(highlightedColor);
         handlePaint.setStyle(Paint.Style.FILL);
         handlePaint.setAntiAlias(true);
         handleRadius = dpToPx(HANDLE_RADIUS_DP);
@@ -136,7 +136,7 @@ class HighlightView {
             viewContext.getDrawingRect(viewDrawingRect);
 
             path.addRect(new RectF(drawRect), Path.Direction.CW);
-            outlinePaint.setColor(highlightColor);
+            outlinePaint.setColor(highlightedColor);
 
             if (isClipPathSupported(canvas)) {
                 canvas.clipPath(path, Region.Op.DIFFERENCE);
